@@ -4,6 +4,11 @@
 # then it will decide use gedit or nautilus to open it by ROOT permission
 #
 # Determine the path
+
+program="gksudo"
+msg="Program $program not found"
+type $program > /dev/null || zenity --error --text="$msg" || notify-send "$msg"
+
 if [ -e -n $1 ]; then
 obj="$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
 else
@@ -16,5 +21,3 @@ gksu gedit "$obj"
 elif [ -d "$obj" ]; then
 gksu nautilus "$obj"
 fi
-
-exit 0

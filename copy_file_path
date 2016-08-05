@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+#After sellecting you cant paste text with middle mouse button
+echo ${NAUTILUS_SCRIPT_CURRENT_URI#file://}/$1 | xsel 

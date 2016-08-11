@@ -1,8 +1,9 @@
 #!/bin/bash
 
 
-#After sellecting you cant paste text with middle mouse button
-echo ${NAUTILUS_SCRIPT_CURRENT_URI#file://}/$1 | xsel 
+program="clipit"
+msg="Program $program not found"
+type $program > /dev/null || zenity --error --text="$msg" || notify-send "$msg"
 
-#coping with Ctrl+Shit+V
-echo ${NAUTILUS_SCRIPT_CURRENT_URI#file://}/$1 | xsel -b
+#After sellecting you can paste text with ctrl+V
+echo $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS | $program

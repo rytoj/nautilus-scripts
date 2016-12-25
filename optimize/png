@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# This script compresses png files
+
+for filename in "$@"
+do
+    extension="${filename##*.}"
+    if [[ $extension == "png" ]]; then
+
+            pngquant "$filename"
+
+    fi
+done

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+VIDDIR=$(dirname $1)
+
+notify-send -i video-x-generic.png "pdf to jpg" "Converting $(basename "$1") ..."
+
+convert -background white -alpha remove "$1" filename.jpg
+
+
+notify-send -i video-x-generic.png "$(basename "$1") converted"
+
+
+
+

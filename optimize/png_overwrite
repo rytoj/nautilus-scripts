@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This script compresses and overwrites png files
+# Dependencies: zenity, pngquant
+
+
+zenity --question \
+--text="Do you really want to overwrite files ?"
+
+
+if [[  "$?" -eq 0 ]]; then
+
+    for filename in "$@"
+    do
+        extension="${filename##*.}"
+        if [[ $extension == "png" ]]; then
+
+                pngquant -f --ext .png "$filename"
+
+        fi
+    done
+
+fi

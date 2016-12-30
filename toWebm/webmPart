@@ -4,12 +4,13 @@
 # DESCRIPTIOM:	Converts video files to .webm
 # LICENSE       GNU GPL v3 (http://www.gnu.org/licenses/gpl.html)
 # DEPENDENCIES: libav-tools, notify-osd
+DURATION=$(avconv -i "$1" 2>&1 | grep  Duration | sed 's/^ *//g')
 
 time=$(zenity --forms \
---title="Webm convert" --text="EXAMPLE: start-time-> 00:00:00  Duraction-> 5" \
+--title="Webm convert" --text="EXAMPLE: start-time-> 00:00:00  Duraction-> 5\n${DURATION}"  \
 --add-entry="Start-time" \
 --separator=","  \
---add-entry="Duration")
+--add-entry="Duraction" )
 
 atime=$(echo $time | cut -d, -f1)
 ztime=$(echo $time | cut -d, -f2)
@@ -17,7 +18,7 @@ ztime=$(echo $time | cut -d, -f2)
 if [ -z "$atime" -o -z "$ztime" ]
 	then
 		zenity --info --title=InfoWindow --text="Empty field"
-		exit 	
+		exit
 	fi
 
 avconv -y -i "$1" -acodec libvorbis -aq 5 -ac 2 -qmax 25 -threads 2 -ss "$atime" -t "$ztime" converted.webm
@@ -36,6 +37,6 @@ esac
 
 
 
- 
+
 #avconv -y -i "$1" -acodec libvorbis -aq 5 -ac 2 -qmax 25 -threads 2 -ss 000 -t 000 converted.webm
 #notify-send -i emblem-default "Video conversion" "completed"

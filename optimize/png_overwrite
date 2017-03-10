@@ -3,6 +3,9 @@
 # This script compresses and overwrites png files
 # Dependencies: zenity, pngquant
 
+program="pngquant"
+msg="Program $program not found"
+type $program > /dev/null || zenity --error --text="$msg" || notify-send "$msg" && exit 1
 
 zenity --question \
 --text="Do you really want to overwrite files ?"

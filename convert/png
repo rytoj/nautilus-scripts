@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# This script compresses png files
+
+program="pngquant"
+msg="Program $program not found"
+if [[  "$?" -ne 0 ]]; then
+    zenity --error --text="$msg" || notify-send "$msg" && exit 1
+fi
+for filename in "$@"
+do
+    extension="${filename##*.}"
+    if [[ $extension == "png" ]]; then
+
+            pngquant "$filename"
+
+    fi
+done

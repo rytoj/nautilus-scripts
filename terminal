@@ -23,5 +23,5 @@ else
 		wdir=${NAUTILUS_SCRIPT_SELECTED_FILE_PATHS%%$1*}
 	fi
 fi
-gnome-terminal --working-directory="$wdir"
+gnome-terminal --working-directory="$wdir" 
 

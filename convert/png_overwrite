@@ -7,6 +7,14 @@ program="pngquant"
 msg="Program $program not found"
 type $program > /dev/null || zenity --error --text="$msg" || notify-send "$msg" && exit 1
 
+program="pngquant"
+msg="Program $program not found"
+type $program > /dev/null 
+
+if [[  "$?" -ne 0 ]]; then
+    zenity --error --text="$msg" || notify-send "$msg" && exit 1
+fi
+
 zenity --question \
 --text="Do you really want to overwrite files ?"
 

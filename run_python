@@ -1,0 +1,14 @@
+#!/bin/bash
+# This program runs python script with gnome terminal
+
+
+# Check for python extension
+FILE=$1
+export $FILE
+extension="${filename##*.}"
+
+
+if [[ $extension -eq "py" ]]; then
+    notify-send "Running $FILE"
+    gnome-terminal -e "python $FILE"
+fi

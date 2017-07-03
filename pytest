@@ -1,0 +1,5 @@
+#!/bin/bash
+# This program runs command from gnome terminal
+echo ""
+gnome-terminal -e "python -m pytest"
+

@@ -1,4 +1,4 @@
 #!/bin/bash
-
+# This program runs command from gnome terminal
 gnome-terminal -e "git pull"
 

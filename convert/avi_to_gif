@@ -10,6 +10,10 @@ fi
 
 notify-send -i video-x-generic.png "gif2mp4" "Converting $(basename "$1") ..."
 
-ffmpeg -i "$1" -r "$FPS" $VIDDIR/${1//.avi/.gif}
-
-notify-send -i video-x-generic.png "$(basename "$1") converted"
+#ffmpeg -i "$1" -r "$FPS" $VIDDIR/${1//.avi/.gif}
+ffmpeg -i "$1" -r "$FPS" "$VIDDIR"/converted.gif
+if [[  "$?" -eq 0 ]]; then
+  notify-send -i video-x-generic.png "$(basename "$1") converted"
+else
+  notify-send "echo $?"
+fi

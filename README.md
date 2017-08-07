@@ -8,4 +8,4 @@ Additional scripts, that can be acceded by left clicking
 
 `git clone https://github.com/rytoj/nautilus-scripts .`
 
-Nautilus scripts must be with `+x` permission.
+Scripts must be with `+x` permission.

@@ -9,7 +9,7 @@ case $? in
        
 				;;
     1)
-       notify-send "Error" "Something happened"
+       notify-send "Canceled" "Git checkout canceled"
 				;;
     -1)
         echo "An unexpected error has occurred."

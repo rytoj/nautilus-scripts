@@ -1,0 +1,9 @@
+#!/bin/bash
+# This program checkouts all reset all file to most recent commit
+response=$(zenity --question --title="Checkout" --text="Do you really want to checkout all git files?")
+
+if [[  "$response" -eq 0 ]]; then
+  gnome-terminal -e "git checkout ."
+else
+  notify-send "exiting"
+fi

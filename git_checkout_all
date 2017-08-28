@@ -2,8 +2,17 @@
 # This program checkouts all reset all file to most recent commit
 response=$(zenity --question --title="Checkout" --text="Do you really want to checkout all git files?")
 
-if [[  "$response" -eq 0 ]]; then
-  gnome-terminal -e "git checkout ."
-else
-  notify-send "exiting"
-fi
+case $? in
+    0)
+         notify-send "Reseting files" "git checkout ."
+         gnome-terminal -e "git checkout ."
+       
+				;;
+    1)
+       notify-send "Error" "Something happened"
+				;;
+    -1)
+        echo "An unexpected error has occurred."
+				;;
+esac
+
